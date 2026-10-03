@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilol Shop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">⚡ Bilol Shop</div>
+
+    <nav id="menu">
+        <a href="#home">Главная</a>
+        <a href="#products">Товары</a>
+        <a href="#new">Новинки</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#contacts">Контакты</a>
+    </nav>
+
+    <div class="header-buttons">
+        <button onclick="toggleTheme()">🌙</button>
+        <button onclick="showProfile()">👤</button>
+        <button onclick="showCart()">🛒 <span id="cartCount">0</span></button>
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    </div>
+</header>
+
+
+<section class="hero" id="home">
+    <div>
+        <h1>Bilol Shop</h1>
+        <h2>Современная техника по хорошей цене</h2>
+        <p>Телефоны, ноутбуки, наушники, часы и игровые устройства.</p>
+        <a href="#products" class="hero-btn">Смотреть товары</a>
+    </div>
+</section>
+
+
+<section class="sale">
+    <h2>🔥 Большая распродажа!</h2>
+    <p>Скидки до 30% на популярные товары</p>
+</section>
+
+
+<section class="products-section" id="products">
+
+    <h2 class="title">Наши товары</h2>
+
+    <input
+        type="text"
+        id="search"
+        placeholder="🔎 Поиск товара..."
+        oninput="searchProducts()"
+    >
+
+    <div class="categories">
+        <button onclick="filterProducts('all')">Все</button>
+        <button onclick="filterProducts('phone')">Телефоны</button>
+        <button onclick="filterProducts('computer')">Ноутбуки</button>
+        <button onclick="filterProducts('audio')">Аудио</button>
+        <button onclick="filterProducts('game')">Игры</button>
+    </div>
+
+
+    <div class="products">
+
+        <div class="product" data-name="Smartphone X" data-category="phone">
+
+            <img
+                src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800"
+                alt="Смартфон"
+            >
+
+            <div class="product-info">
+                <h3>Smartphone X</h3>
+                <p>Современный смартфон с отличной камерой.</p>
+
+                <div class="price">2500 сомони</div>
+
+                <button onclick="addToCart('Smartphone X', 2500)">
+                    В корзину
+                </button>
+
+                <button class="more" onclick="showProduct(
+                    'Smartphone X',
+                    'Современный смартфон с мощным процессором и хорошей камерой.',
+                    2500
+                )">
+                    Подробнее
+                </button>
+
+                <button class="favorite" onclick="toggleFavorite(this)">♡</button>
+            </div>
+
+        </div>
+
+
+        <div class="product" 
+        data-name="Air Sound" data-category="audio">
+
+            <img
+                src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800"
+                alt="Наушники"
+            >
+
+            <div class="product-info">
+                <h3>Air Sound</h3>
+                <p>Беспроводные наушники с чистым звуком.</p>
+
+                <div class="price">450 сомони</div>
+
+                <button onclick="addToCart('Air Sound', 450)">
+                    В корзину
+                </button>
+
+                <button class="more" onclick="showProduct(
+                    'Air Sound',
+                    'Беспроводные наушники для музыки, игр и фильмов.',
+                    450
+                )">
+                    Подробнее
+                </button>
+
+                <button class="favorite" onclick="toggleFavorite(this)">♡</button>
+            </div>
+
+        </div>
+
+
+        <div class="product" data-name="Laptop Pro" data-category="computer">
+
+            <img
+                src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800"
+                alt="Ноутбук"
+            >
+
+            <div class="product-info">
+                <h3>Laptop Pro</h3>
+                <p>Быстрый ноутбук для учёбы и работы.</p>
+                <div class="price">5000 сомони</div>
+
+                <button onclick="addToCart('Laptop Pro', 5000)">
+                    В корзину
+                </button>
+
+                <button class="more" onclick="showProduct(
+                    'Laptop Pro',
+                    'Мощный ноутбук для программирования, учёбы и работы.',
+                    5000
+                )">
+                    Подробнее
+                </button>
+
+                <button class="favorite" onclick="toggleFavorite(this)">♡</button>
+            </div>
+
+        </div>
+
+
+        <div class="product" data-name="Smart Watch" data-category="phone">
+
+            <img
+                src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800"
+                alt="Умные часы"
+            >
+
+            <div class="product-info">
+                <h3>Smart Watch</h3>
+                <p>Стильные умные часы для каждый день.</p>
+
+                <div class="price">700 сомони</div>
+
+                <button onclick="addToCart('Smart Watch', 700)">
+                    В корзину
+                </button>
+
+                <button class="more" onclick="showProduct(
+                    'Smart Watch',
+                    'Умные часы с современным дизайном и полезными функциями.',
+                    700
+                )">
+                    Подробнее
+                </button>
+
+                <button class="favorite" onclick="toggleFavorite(this)">♡</button>
+            </div>
+
+        </div>
+
+
+        <div class="product" data-name="Game Controller" data-category="game">
+
+            <img
+                src="https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?w=800"
+                alt="Игровой контроллер"
+            >
+
+            <div class="product-info">
+                <h3>Game Controller</h3>
+                <p>Удобный контроллер для игр.</p>
+
+                <div class="price">350 сомони</div>
+
+                <button onclick="addToCart('Game Controller', 350)">
+                    В корзину
+                </button>
+
+                <button class="more" onclick="showProduct(
+                    'Game Controller',
+                    'Удобный игровой контроллер для комфортной игры.',
+                    350
+                )">
+                    Подробнее
+                </button>
+
+                <button class="favorite" onclick="toggleFavorite(this)">♡</button>
+            </div>
+
+        </div>
+
+
+        <div class="product" data-name="Mini Speaker" data-category="audio">
+
+            <img
+                src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=800"
+                alt="Колонка"
+            >
+
+            <div class="product-info">
+                <h3>Mini Speaker</h3>
+                <p>Компактная Bluetooth-колонка.</p>
+
+                <div class="price">300 сомони</div>
+
+                <button onclick="addToCart('Mini Speaker', 300)">
+                    В корзину
+                </button>
+
+                <button class="more" onclick="showProduct(
+                    'Mini Speaker',
+                    'Небольшая Bluetooth-колонка с хорошим звучанием.',
+                    300
+                )">
+                    Подробнее
+                </button>
+
+                <button class="favorite" onclick="toggleFavorite(this)">♡</button>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section class="new-section" id="new">
+    <h2 class="title">✨ Новинки</h2>
+
+    <div class="new-box">
+        <h2>Новые товары уже в Bilol Shop!</h2>
+        <p>Следи за обновлениями магазина и находи новые устройства.</p>
+    </div>
+</section>
+
+
+<section id="reviews">
+    <h2 class="title">Отзывы клиентов</h2>
+
+    <div class="reviews">
+
+        <div class="review">
+            <h3>⭐️⭐️⭐️⭐️⭐️</h3>
+            <p>Хороший магазин и быстрая доставка.</p>
+            <b>Али</b>
+        </div>
+
+        <div class="review">
+            <h3>⭐️⭐️⭐️⭐️⭐️</h3>
+            <p>Купил наушники. Всё отлично работает.</p>
+            <b>Мухаммад</b>
+        </div>
+        <div class="review">
+            <h3>⭐️⭐️⭐️⭐️</h3>
+            <p>Понравился дизайн магазина.</p>
+            <b>Саид</b>
+        </div>
+
+    </div>
+</section>
+
+
+<section class="contacts" id="contacts">
+    <h2>📞 Контакты</h2>
+    <p>Телефон: +992 900 00 00 00</p>
+    <p>Email: bilolshop@gmail.com</p>
+</section>
+
+
+<footer>
+    <p>© 2026 Bilol Shop</p>
+</footer>
+
+
+<!-- КОРЗИНА -->
+
+<div class="modal" id="cartWindow">
+
+    <div class="modal-box">
+
+        <button class="close" onclick="closeCart()">×</button>
+
+        <h2>🛒 Корзина</h2>
+
+        <div id="cartItems"></div>
+
+        <h3>
+            Итого:
+            <span id="totalPrice">0</span> сомони
+        </h3>
+
+        <button class="checkout" onclick="openCheckout()">
+            Оформить заказ
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ТОВАР -->
+
+<div class="modal" id="productWindow">
+
+    <div class="modal-box">
+
+        <button class="close" onclick="closeProduct()">×</button>
+
+        <h2 id="productTitle"></h2>
+
+        <p id="productText"></p>
+
+        <h3>
+            Цена:
+            <span id="productPrice"></span> сомони
+        </h3>
+
+    </div>
+
+</div>
+
+
+<!-- ПРОФИЛЬ -->
+
+<div class="modal" id="profileWindow">
+
+    <div class="modal-box">
+
+        <button class="close" onclick="closeProfile()">×</button>
+
+        <h2>👤 Профиль</h2>
+
+        <p>Добро пожаловать в Bilol Shop!</p>
+
+        <button onclick="closeProfile()">Закрыть</button>
+
+    </div>
+
+</div>
+
+
+<!-- ОФОРМЛЕНИЕ -->
+
+<div class="modal" id="checkoutWindow">
+
+    <div class="modal-box">
+
+        <button class="close" onclick="closeCheckout()">×</button>
+
+        <h2>Оформление заказа</h2>
+
+        <input id="customerName" placeholder="Ваше имя">
+        <input id="customerPhone" placeholder="Телефон">
+        <input id="customerAddress" placeholder="Адрес">
+
+        <button onclick="finishOrder()">Заказать</button>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
